@@ -45,7 +45,7 @@ namespace BinarySearch
                             Console.WriteLine("Selected class does not implement IRunnable.");
                         }
                     }
-                    else if (choice == classes.Count + 1)
+                    else if (choice == classes.Count + 1)   
                     {
                         Console.WriteLine("Exiting program...");
                         break;
