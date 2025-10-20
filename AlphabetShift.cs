@@ -8,49 +8,29 @@ namespace PracticeQuestions
     {
         public void Run()
         {
-            Console.WriteLine("Running AlphabetShift example...");
-
             string input = "abc";
             List<int> rolls = new List<int> { 1, 2, 3 };
 
-            string result = RollTheString(input, rolls);
+            string result = StringRoll(input, new List<int>(rolls));
             Console.WriteLine($"Input: {input}");
             Console.WriteLine($"Rolls: {string.Join(", ", rolls)}");
-            Console.WriteLine($"Result: {result}");
+            Console.WriteLine($"Result using StringRoll: {result}");
         }
 
-        internal static string RollTheString(string s, List<int> roll)
+        internal static string StringRoll(string s, List<int> roll)
         {
-            int size = s.Length;
-            int[] rolls = new int[size];
-
-            foreach (int r in roll)
+            for (int i = roll.Count - 2; i >= 0; i--)
             {
-                if (r <= size)
-                {
-                    rolls[0] += 1;
-                }
-                if (r < size)
-                {
-                    rolls[r] -= 1;
-                }
+                roll[i] = (roll[i] + roll[i + 1]) % 26;
             }
 
-            for (int i = 1; i < size; i++)
+            char[] chars = s.ToCharArray();
+            for (int i = 0; i < chars.Length; i++)
             {
-                rolls[i] += rolls[i - 1];
+                chars[i] = (char)((chars[i] - 'a' + roll[i] % 26) % 26 + 'a');
             }
 
-            StringBuilder result = new StringBuilder();
-            for (int i = 0; i < size; i++)
-            {
-                int shift = rolls[i] % 26;
-                char c = s[i];
-                char rolled = (char)('a' + (c + shift - 'a') % 26);
-                result.Append(rolled);
-            }
-
-            return result.ToString();
+            return new string(chars);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace PracticeQuestions
 {
-    public class ReverseSentence : IRunnable
+    public class ReverseOrder : IRunnable
     {
         public void Run()
         {

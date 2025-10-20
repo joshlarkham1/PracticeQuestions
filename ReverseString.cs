@@ -2,16 +2,16 @@
 
 namespace PracticeQuestions
 {
-    public class Reverse : IRunnable
+    public class ReverseString : IRunnable
     {
         public void Run()
         {
             string input = "Hello World";
             Console.WriteLine("Input: " + input);
-            ReverseString(input);
+            ReverseWholeString(input);
         }
 
-        internal static void ReverseString(string str)
+        internal static void ReverseWholeString(string str)
         {
             char[] charArray = str.ToCharArray();
 
